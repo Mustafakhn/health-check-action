@@ -1,0 +1,29 @@
+name: "health-check"
+description: "check if a website is up or not"
+
+inputs: 
+  website_url:
+    description: "the url of the website that you want to check"
+    required: true
+  version_name:
+    description: "a version specific tagthat you want to search for in the given website"
+    required: false
+    default: none
+  method:
+    description: "the method that you want to use ( wget or curl ) default is curl"
+    required: false
+    default: curl
+  tag:
+    description: "how to tag the image Default: latest"
+    
+  runs:
+    using: "composite"
+    steps:
+      - name: installing dependencies
+        run: sudo apt-get install wget
+          
+      - name: test
+        run:|
+          sudo chmod u+x ./test.sh
+          timeout 300 ./test.sh ${{ input.website_url }} ${{ input.version_name }} ${{ input.method }}
+          #yet to write more
