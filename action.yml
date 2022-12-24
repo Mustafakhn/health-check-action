@@ -2,10 +2,10 @@ name: "health-check"
 description: "check if a website is up or not"
 
 inputs: 
-  website_url:
+  website-url:
     description: "the url of the website that you want to check"
     required: true
-  version_name:
+  version-name:
     description: "a version specific tagthat you want to search for in the given website"
     required: false
     default: none
@@ -14,8 +14,8 @@ inputs:
     required: false
     default: curl
 env: 
-  WEBSITE_NAME: ${{ inputs.website_url }}
-  VERSION_NAME: ${{ inputs.version_name }}
+  WEBSITE_NAME: ${{ inputs.website-url }}
+  VERSION_NAME: ${{ inputs.version-name }}
   METHOD: ${{ inputs.method }}
   tag:
     description: "how to tag the image Default: latest"
