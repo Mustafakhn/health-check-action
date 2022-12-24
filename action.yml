@@ -23,7 +23,7 @@ inputs:
         run: sudo apt-get install wget
           
       - name: test
-        run:|
+      - run: |
           sudo chmod u+x ./test.sh
           timeout 300 ./test.sh ${{ input.website_url }} ${{ input.version_name }} ${{ input.method }}
         shell: bash
