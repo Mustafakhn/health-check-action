@@ -14,9 +14,9 @@ inputs:
     required: false
     default: curl
 env: 
-  WEBSITE_NAME: ${{ inputs.website-url }}
-  VERSION_NAME: ${{ inputs.version-name }}
-  METHOD: ${{ inputs.method }}
+  WEBSITE_NAME: "${{ inputs.website-url }}"
+  VERSION_NAME: "${{ inputs.version-name }}"
+  METHOD: "${{ inputs.method }}"
   tag:
     description: "how to tag the image Default: latest"
     
