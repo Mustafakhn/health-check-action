@@ -28,7 +28,7 @@ inputs:
       - name: test
       - run: |
           sudo chmod u+x ./test.sh
-          timeout 300 ./test.sh $WEBSITE_NAME $VERSION_NAME $METHOD
+          timeout 300 ./test.sh "$WEBSITE_NAME" "$VERSION_NAME" "$METHOD"
         shell: bash
 outputs:
   output-result:
