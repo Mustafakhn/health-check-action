@@ -21,11 +21,14 @@ inputs:
     steps:
       - name: installing dependencies
         run: sudo apt-get install wget
-          
+        env: 
+          WEBSITE_NAME: ${{ inputs.website_url }}
+          VERSION_NAME: ${{ inputs.version_name }}
+          METHOD: ${{ inputs.method }}
       - name: test
       - run: |
           sudo chmod u+x ./test.sh
-          timeout 300 ./test.sh ${{ inputs.website_url }} ${{ inputs.version_name }} ${{ inputs.method }}
+          timeout 300 ./test.sh $WEBSITE_NAME $VERSION_NAME $METHOD
         shell: bash
 outputs:
   output-result:
