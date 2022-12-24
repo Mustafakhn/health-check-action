@@ -25,7 +25,7 @@ inputs:
       - name: test
       - run: |
           sudo chmod u+x ./test.sh
-          timeout 300 ./test.sh ${{ input.website_url }} ${{ input.version_name }} ${{ input.method }}
+          timeout 300 ./test.sh ${{ inputs.website_url }} ${{ inputs.version_name }} ${{ inputs.method }}
         shell: bash
 outputs:
   output-result:
