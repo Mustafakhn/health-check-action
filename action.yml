@@ -13,16 +13,16 @@ inputs:
     description: "the method that you want to use ( wget or curl ) default is curl"
     required: false
     default: curl
-env: 
-  WEBSITE_NAME: "${{ inputs.website-url }}"
-  VERSION_NAME: "${{ inputs.version-name }}"
-  METHOD: "${{ inputs.method }}"
   tag:
     description: "how to tag the image Default: latest"
     
   runs:
     using: "composite"
     steps:
+      env: 
+        WEBSITE_NAME: ${{ inputs.website-url }}
+        VERSION_NAME: ${{ inputs.version-name }}
+        METHOD: ${{ inputs.method }}
       - name: installing dependencies
         run: sudo apt-get install wget
       - name: test
