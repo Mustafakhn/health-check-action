@@ -26,4 +26,8 @@ inputs:
         run:|
           sudo chmod u+x ./test.sh
           timeout 300 ./test.sh ${{ input.website_url }} ${{ input.version_name }} ${{ input.method }}
-          #yet to write more
+        shell: bash
+outputs:
+  output-result:
+    description: "results of health check"
+    value: ${{ steps.test.outputs.output-result }}
