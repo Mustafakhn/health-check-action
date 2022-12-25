@@ -25,13 +25,12 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/checkout@v3
     - name: installing dependencies
       run: sudo apt-get install wget
       shell: bash
       
     - name: test
       run: |
-        sudo chmod u+x ./test.sh
-        timeout 300 ./test.sh ${{ inputs.website_url }} ${{ inputs.version_name }} "${{ inputs.method }}"
+        sudo chmod u+x $GITHUB_ACTION_PATH/test.sh
+        timeout 300 $GITHUB_ACTION_PATH/test.sh ${{ inputs.website_url }} ${{ inputs.version_name }} "${{ inputs.method }}"
       shell: bash
