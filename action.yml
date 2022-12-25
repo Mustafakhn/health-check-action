@@ -22,17 +22,18 @@ outputs:
     value: ${{ steps.test.outputs.output-result }}
 
     
-  runs:
-    using: "composite"
-    steps:
-      env: 
-        WEBSITE_NAME: ${{ inputs.website_url }}
-        VERSION_NAME: ${{ inputs.version_name }}
-        METHOD: ${{ inputs.method }}
-      - name: installing dependencies
-        run: sudo apt-get install wget
-      - name: test
-      - run: |
-          sudo chmod u+x ./test.sh
-          timeout 300 ./test.sh "$WEBSITE_NAME" "$VERSION_NAME" "$METHOD"
+runs:
+  using: "composite"
+  steps:
+    env: 
+      WEBSITE_NAME: ${{ inputs.website_url }}
+      VERSION_NAME: ${{ inputs.version_name }}
+      METHOD: ${{ inputs.method }}
+    - name: installing dependencies
+      run: sudo apt-get install wget
+      shell: bash
+    - name: test
+      run: |
+        sudo chmod u+x ./test.sh
+        timeout 300 ./test.sh "$WEBSITE_NAME" "$VERSION_NAME" "$METHOD"
       shell: bash
