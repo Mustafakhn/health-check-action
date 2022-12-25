@@ -2,10 +2,10 @@ name: "health-check"
 description: "check if a website is up or not"
 
 inputs: 
-  website-url:
+  website_url:
     description: "the url of the website that you want to check"
     required: true
-  version-name:
+  version_name:
     description: "a version specific tagthat you want to search for in the given website"
     required: false
     default: none
@@ -16,12 +16,18 @@ inputs:
   tag:
     description: "how to tag the image Default: latest"
     
+outputs:
+  output-result:
+    description: "results of health check"
+    value: ${{ steps.test.outputs.output-result }}
+
+    
   runs:
     using: "composite"
     steps:
       env: 
-        WEBSITE_NAME: ${{ inputs.website-url }}
-        VERSION_NAME: ${{ inputs.version-name }}
+        WEBSITE_NAME: ${{ inputs.website_url }}
+        VERSION_NAME: ${{ inputs.version_name }}
         METHOD: ${{ inputs.method }}
       - name: installing dependencies
         run: sudo apt-get install wget
@@ -29,8 +35,4 @@ inputs:
       - run: |
           sudo chmod u+x ./test.sh
           timeout 300 ./test.sh "$WEBSITE_NAME" "$VERSION_NAME" "$METHOD"
-        shell: bash
-outputs:
-  output-result:
-    description: "results of health check"
-    value: ${{ steps.test.outputs.output-result }}
+      shell: bash
