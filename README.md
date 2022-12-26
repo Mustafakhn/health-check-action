@@ -3,7 +3,7 @@ This action health checks the website given by the user
 HOW TO USE
 
 ```
-uses: Mustafakhn/health-check-action@main
+uses: Mustafakhn/health-check-action@V-1.0.0
       with:
           website_url: <url_for_website>
           version_name: <version_name> #optional
