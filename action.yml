@@ -1,4 +1,4 @@
-name: "health-check"
+name: "health-check-for-website"
 description: "check if a website is up or not"
 
 inputs: 
