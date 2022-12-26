@@ -7,7 +7,8 @@ uses: Mustafakhn/health-check-action@v1
       with:
           website_url: <url_for_website>
           version_name: <version_name> #optional
-          method: wget #optional
+          method: wget #optional - default is curl
+          timeout: 600 #optional - default is 300
 ```
 
 It has three inputs :-
@@ -18,8 +19,10 @@ It has three inputs :-
 
 - method: (optional) you can give the method you want to use to check the website the options are (curl and wget) default is curl
 
-This action has a timeout of 5 minutes
+- timeout: (optional) you can give specify a time limit in seconds on which you want to run this action default is 300
 
-This action will try to reach the given website for 5 minutes
+This action has a default timeout of 5 minutes you can change the value while using the action
 
-If your website isn't up then it will fail after 5 minutes and return the ( failure ) status if it times out else it will return ( success ) status if it's able to reach the given website
+This action will try to reach the given website for the given timeout
+
+If your website isn't up then it will fail after the given timeout attribute and return the ( failure ) status if it times out else it will return ( success ) status if it's able to reach the given website
