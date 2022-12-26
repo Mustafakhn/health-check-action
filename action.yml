@@ -16,6 +16,10 @@ inputs:
     description: "the method that you want to use ( wget or curl ) default is curl"
     required: false
     default: curl
+  timeout:
+    description: "the time ( in seconds ) you want to run this action to try to reach the given website ( default is 300 )"
+    require: false
+    default: 300
   tag:
     description: "how to tag the image Default: latest"
     
@@ -31,5 +35,5 @@ runs:
     - name: test
       run: |
         sudo chmod u+x $GITHUB_ACTION_PATH/test.sh
-        timeout 300 $GITHUB_ACTION_PATH/test.sh ${{ inputs.website_url }} ${{ inputs.version_name }} "${{ inputs.method }}"
+        timeout ${{ inputs.timeout }} $GITHUB_ACTION_PATH/test.sh ${{ inputs.website_url }} ${{ inputs.version_name }} ${{ inputs.method }}
       shell: bash
