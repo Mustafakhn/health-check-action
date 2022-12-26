@@ -2,9 +2,9 @@
 
 if [[ "$2" != "none" && "$3" != "curl" ]]
 then
+  sudo apt-get install wget
   while [ "$status" != "0" ]; do
       sleep 5
-      sudo apt-get install wget --silent
       wget -S --spider $1 2>&1 | grep HTTP/
       wget $1 -q -O - | grep -Po $2
       status=$(echo $?)
@@ -19,9 +19,9 @@ then
   done
 elif [[ "$3" != "curl" ]]
 then
+  sudo apt-get install wget
   while [ "$status" != "0" ]; do
       sleep 5
-      sudo apt-get install wget
       wget -S --spider $1 2>&1 | grep HTTP/
       wget $1 -q -O -
       status=$(echo $?)
