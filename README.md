@@ -11,11 +11,11 @@ uses: Mustafakhn/health-check-action@v1
           timeout: 600 #optional - default is 300
 ```
 
-It has three inputs :-
+The action has four inputs :-
 
 - website_url: (required)
 
-- version name: (optional) you can check a version if you have any thing that is version specific embedded in the root html file
+- version_name: (optional) you can check a version if you have any thing that is version specific embedded in the root html file
 
 - method: (optional) you can give the method you want to use to check the website the options are (curl and wget) default is curl
 
