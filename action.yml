@@ -1,6 +1,9 @@
 name: "health-check-for-website"
 description: "check if a website is up or not"
-
+author: Mustafa Khan
+branding:
+  icon: check-circle
+  color: 'blue'
 inputs: 
   website_url:
     description: "the url of the website that you want to check"
