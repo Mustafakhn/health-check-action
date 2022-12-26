@@ -34,3 +34,9 @@ else
       status=$(echo $?)
   done
 fi
+if ["$status" == "0"]
+then
+  echo "Health check passed - your website is up"
+else
+  echo "Health check failed - your website is not up"
+fi
