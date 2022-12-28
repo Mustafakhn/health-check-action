@@ -23,10 +23,10 @@ inputs:
   tag:
     description: "how to tag the image Default: latest"
     
-# outputs:
-#   output-result:
-#     description: "results of health check"
-#     value: ${{ steps.test.outputs.output-result }}
+outputs:
+  output-result:
+    description: "results of health check"
+    value: ${{ steps.test.outputs.output-result }}
 
     
 runs:
