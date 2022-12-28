@@ -30,10 +30,15 @@ outputs:
 
     
 runs:
+  env:
+    TIMEOUT: ${{ inputs.timeout }}
+    WEBSITE: ${{ inputs.website_url }}
+    VERSION: ${{ inputs.version_name }}
+    METHOD: ${{ inputs.method }}
   using: "composite"
   steps:
     - name: test
       run: |
         sudo chmod u+x $GITHUB_ACTION_PATH/test.sh
-        timeout ${{ inputs.timeout }} $GITHUB_ACTION_PATH/test.sh ${{ inputs.website_url }} ${{ inputs.version_name }} ${{ inputs.method }}
+        timeout $TIMEOUT $GITHUB_ACTION_PATH/test.sh $WEBSITE $VERSION $METHOD
       shell: bash
