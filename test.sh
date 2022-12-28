@@ -13,7 +13,7 @@ then
   while [ "$status" != "0" ]; do
       sleep 5
       curl $1
-      curl -v --silent $1 2>&1 | grep -Po $2
+      curl -H 'Cache-Control: no-cache, no-store' -v --silent $1 2>&1 | grep -Po $2
       status=$(echo $?)
   done
 elif [[ "$3" != "curl" ]]
@@ -28,7 +28,7 @@ else
   while [ "$status" != "0" ]; do
       sleep 5
       curl $1
-      curl -v --silent $1 2>&1
+      curl -H 'Cache-Control: no-cache, no-store' -v --silent $1 2>&1
       status=$(echo $?)
   done
 fi
