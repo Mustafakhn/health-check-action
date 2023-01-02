@@ -4,7 +4,7 @@ if [[ "$2" != "none" && "$3" != "curl" ]]
 then
   while [ "$status" != "0" ]; do
       sleep 5
-      wget -S --spider $1 2>&1 | grep HTTP/
+      wget -S --no-cache --spider $1 2>&1 | grep HTTP/
       wget $1 -q -O - | grep -Po $2
       status=$(echo $?)
   done
@@ -20,7 +20,7 @@ elif [[ "$3" != "curl" ]]
 then
   while [ "$status" != "0" ]; do
       sleep 5
-      wget -S --spider $1 2>&1 | grep HTTP/
+      wget -S --no-cache --spider $1 2>&1 | grep HTTP/
       wget $1 -q -O -
       status=$(echo $?)
   done
